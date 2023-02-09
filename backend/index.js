@@ -1,8 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const user = require('./models/User');
-const contact = require('./models/Contact');
+
+const  getContacts= require("./routes/getContacts")
+app.use("/getcontacts", getContacts)
+
+
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const bodyParser = require("body-parser");
