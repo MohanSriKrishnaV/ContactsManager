@@ -1,0 +1,16 @@
+table,tr,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 6px;
+}
+table{
+    margin-top: 20px;
+}
+#edit{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+#titlee[title]{
+  padding: 10px;
+  color: blue;
+}
