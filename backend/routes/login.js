@@ -25,7 +25,7 @@ router.post('/login', async (req, res)=>{
             }
             if(result){
                 const token = jwt.sign({
-                    exp: Math.floor(Date.now() / 1000) + (60 * 60),
+                    // exp: Math.floor(Date.now() / 1000) + (60 * 60),
                     data: user_obj._id
                   }, secret);
 
