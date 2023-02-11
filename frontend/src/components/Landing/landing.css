@@ -1,16 +1,143 @@
-table,tr,th,td{
+table,
+tr,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 6px;
 }
-table{
+
+table {
     margin-top: 20px;
 }
-#edit{
+
+#edit {
     margin-left: 6px;
     margin-right: 6px;
 }
-#titlee[title]{
-  padding: 10px;
-  color: blue;
+
+#titlee[title] {
+    padding: 10px;
+    color: black;
+}
+
+.delete-modal {
+    height: 20vh;
+    width: 30vw;
+    margin-left: 40vw;
+    margin-top: 25vh;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.btns {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 15px;
+    color: #FFFFFF;
+    background: #2DA5FC;
+    border-radius: 5px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+table,
+tr,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 7px 12px;
+}
+
+table {
+    margin-top: 20px;
+    margin: auto
+}
+
+#edit {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+#titlee[title] {
+    padding: 10px;
+
+
+}
+
+#titlee:hover {
+    background-color: rgb(201, 230, 12);
+}
+
+#titlee:nth-child(2n+1):hover {
+    background-color: rgb(201, 230, 12);
+}
+
+#titlee:nth-child(2n+1) {
+    background-color: aquamarine;
+}
+
+#table-head {
+    background-color: aqua
+}
+
+#table-head {
+    background-color: aquamarine;
+    color: brown;
+}
+
+#delete {
+    background-color: red;
+    margin: 4px;
+    border: 1px solid grey;
+}
+
+#edit {
+    background-color: whitesmoke;
+    margin: 4px;
+    border: 1px solid grey;
+}
+
+
+.delete-complete {
+    height: 20vh;
+    width: 30vw;
+    margin-left: 40vw;
+    margin-top: 25vh;
+    text-align: center;
+    border: 2px solid black;
+
+}
+
+
+
+
+/* css for modal over the table */
+
+.pre-upload-modal {
+    position: absolute;
+    background-color: white;
+    border: 2px solid black;
+    margin-left: 30vw;
+}
+
+
+
+body {
+    position: relative;
+
+}
+
+.ddf {
+    border: 2px solid black;
+    width: 200px;
+    height: 100px;
 }
