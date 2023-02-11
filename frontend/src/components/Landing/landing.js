@@ -7,7 +7,7 @@ import { FileUploader } from "react-drag-drop-files";
 
 const fileTypes = ["CSV"];
 
-const Landing = () => {
+const LandingPage = () => {
     const [mail, setmail] = useState([]);
     const [data, setdata] = useState([]);
     const [selections, setSelections] = useState([]);
@@ -43,19 +43,20 @@ const Landing = () => {
 
 
     const formsubmit = async () => {
-
         const formdata = new FormData();
         formdata.append("file", file);
         console.log(formdata);
-
         const res = await fetch("http://localhost:8086/contacts", {
             method: "POST",
+            headers: {
+                "Authorization": localStorage.getItem("jwt")
+            },
             body: formdata
-        });
-        const response = await res.json();
-        if (response.status == "success") {
-            setcount(count + 1);
-        }
+        })
+        // const response = await res.json();
+        // if (response.status == "success") {
+        //     setcount(count + 1);
+        // }
 
     }
 
@@ -67,7 +68,7 @@ const Landing = () => {
         fetch(`http://localhost:8086/contacts/:${e.target.name}`, {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8', "Authorization": localStorage.getItem("jwt")
             },
         }).then((response) => response.json())
             .then((prevdata) => {
@@ -88,7 +89,7 @@ const Landing = () => {
         await fetch("http://localhost:8086/contacts", {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8', "Authorization": localStorage.getItem("jwt")
             },
             body: JSON.stringify(selections),
         }).then((response) => response.json())
@@ -108,7 +109,11 @@ const Landing = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8086/getcontacts").then((res) => {
+        fetch("http://localhost:8086/contacts", {
+            headers: {
+                "Authorization": localStorage.getItem("jwt")
+            }
+        }).then((res) => {
             return res.json()
         }).then((final) => {
             setdata(final.info)
@@ -116,15 +121,6 @@ const Landing = () => {
             console.log(err)
         })
     }, [count])
-
-
-
-
-
-
-
-
-
 
 
 
@@ -302,4 +298,4 @@ const Landing = () => {
         </div>
     )
 }
-export default Landing;
+export default LandingPage;

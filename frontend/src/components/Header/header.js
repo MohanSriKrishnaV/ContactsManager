@@ -1,10 +1,9 @@
 import React from "react";
 import "./header.css"
-const Header=()=>{
-    return(
+const Header = () => {
+    return (
         <>
-        
-         <button id="deleteAll">DeleteAll</button>
+            <h1>Header</h1>
         </>
     )
 }

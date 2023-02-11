@@ -8,7 +8,9 @@ const { JsonWebTokenError } = require("jsonwebtoken");
 const fileUpload = require('express-fileupload');
 route.use(fileUpload());
 const contact = require("../models/Contact");
-
+const bodyParser = require("body-parser");
+route.use(bodyParser.json())
+route.use(bodyParser.urlencoded({ extended: false }))
 
 
 route.post("/", async (req, res) => {
@@ -36,9 +38,14 @@ route.post("/", async (req, res) => {
                     });
                 }
 
+                res.status(200).json({ status: "success" });
+
                 fs.unlink(path.join(__dirname, "..", "files", `${file.md5}.csv`), (err) => {
                     console.log(err);
                 })
+
+
+
             } catch (e) {
                 res.status(400).json({
                     status: "error",
@@ -49,12 +56,18 @@ route.post("/", async (req, res) => {
     })
 })
 
+
+
 route.delete("/", async (req, res) => {
 
     try {
-        const deleted_data = await contact.deleteMany();
+        const datas = req.body;
+        for (let i = 0; i < datas.length; i++) {
+            let data = datas[i];
+            const deleted_data = await contact.deleteOne({ _id: data.id })
+        }
         res.status(200).json({
-            message: deleted
+            message: "deleted"
         })
 
     } catch (e) {
@@ -66,5 +79,39 @@ route.delete("/", async (req, res) => {
 })
 
 
+route.delete("/contact", async (req, res) => {
+    try {
+        const data = req.body;
+        const deleted_contact = await contact.deleteOne({ _id: data.id });
+        const updated_list = await contact.find();
+        res.status(200).json({
+            updated_list
+        })
+
+    } catch (e) {
+        res.status(400).json({
+            status: "error",
+            message: e.message
+        })
+    }
+})
+
+
+route.delete("/:contact", async (req, res) => {
+    try {
+        const data = req.params.contact.split(":")[1];
+        const deleted_contact = await contact.deleteOne({ _id: data });
+        const updated_list = await contact.find();
+        res.status(200).json({
+            updated_list
+        })
+
+    } catch (e) {
+        res.status(400).json({
+            status: "error",
+            message: e.message
+        })
+    }
+})
 
 module.exports = route;
