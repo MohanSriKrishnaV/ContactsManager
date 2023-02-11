@@ -24,6 +24,9 @@ const Import = () => {
         console.log(formdata);
         await fetch("http://localhost:8086/contacts", {
             method: "POST",
+            headers : {
+                "Authorization" : localStorage.getItem("jwt")
+            },
             body: formdata
         })
     }

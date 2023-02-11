@@ -1,12 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const app = express();
-
-const  getContacts= require("./routes/getContacts")
-app.use("/getcontacts", getContacts)
-
-
+const user = require('./models/User');
+const contact = require('./models/Contact');
+const registrationRoute = require('./routes/registration')
+const loginRoute = require('./routes/login');
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const app = express();
+const secret = "RESTAPI"
+const  getContacts= require("./routes/getContacts")
+
+
+
+// const bcrypt = require("bcrypt");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -19,9 +25,11 @@ const fileUpload = require('express-fileupload');
 const contacts = require("./routes/contacts");
 
 
-app.use("/contacts", contacts);
+
 app.use(fileUpload());
 
+app.use('/api', registrationRoute);
+app.use('/api', loginRoute);
 
 const url = `mongodb+srv://admin:admin@cluster0.kzqiv0i.mongodb.net/?retryWrites=true&w=majority`
 
@@ -34,6 +42,30 @@ mongoose.connect(url, (err) => {
 })
 
 
+app.use("/contacts", (req, res, next)=>{
+    const token = req.headers.authorization
+    if(token){
+        jwt.verify(token, secret, function(err, decode){
+            if(err){
+                return res.status(403).json({
+                    status : "Failed",
+                    message : "Invalid token"
+                })
+            }
+            console.log(decode)
+            req.user = decode.data;
+            next();
+        })
 
+    }else{
+        res.status(403).json({
+            status : "Failed",
+            message : "User is not authenticated"
+        })
+    }
+})
+
+app.use("/contacts", getContacts)
+app.use("/contacts", contacts);
 
 app.listen(port, () => console.log(`App listening to port ${port}`))

@@ -1,4 +1,7 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const secret = 'RESTAPI'
 const route=express.Router()
 
 route.use(express.json());
@@ -11,7 +14,8 @@ route.get("/" , cors(),async(req,res)=>{
     const info= await data.find()
     res.status(200).json({
         status:"passed",
-        info
+        info,
+        user:req.user
     })
     }
     catch(e){
@@ -22,7 +26,11 @@ route.get("/" , cors(),async(req,res)=>{
     }
 })
 
-
+route.get('/new', (req, res)=>{
+    res.send({
+        status:"Working"
+    })
+})
 // route.get("/search", async(req,res)=>{
 //      const search= await data.find()
 // })

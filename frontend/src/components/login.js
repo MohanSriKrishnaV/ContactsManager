@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 
 const Login = ()=>{
     const [email, setemail] = useState("");
@@ -21,7 +21,7 @@ const Login = ()=>{
         console.log(data)
         if(data.token){
             localStorage.setItem("jwt", data.token)
-            localStorage.setItem("user", data.user)
+            localStorage.setItem("user", JSON.stringify(data.user))
             // window.location.href = '/landing'
         }
         setResponse(data)
