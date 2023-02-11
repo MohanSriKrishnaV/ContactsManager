@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import {useNavigate} from "react-router-dom"
 const SignUp = () => {
+    const navigate = useNavigate()
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
     const [cpass, setcpass] = useState("");
@@ -30,7 +31,8 @@ const SignUp = () => {
         console.log(data.data);
         setResponse(data)
         if(data.data){
-            window.location.href = '/login'
+            alert(data.message)
+            navigate('/login')
         }
     }
     const checkErrors = (type) => {

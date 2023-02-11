@@ -10,6 +10,7 @@ router.post('/login', async (req, res)=>{
         console.log(req.body);
         const { email, password } = req.body;
         const user_obj = await user.findOne({ email });
+        console.log(user_obj)
         if(!user_obj){
             return res.status(400).json({
                 status: "Failed",
@@ -24,6 +25,7 @@ router.post('/login', async (req, res)=>{
                 })
             }
             if(result){
+                const {_id, email} = user_obj
                 const token = jwt.sign({
                     // exp: Math.floor(Date.now() / 1000) + (60 * 60),
                     data: user_obj._id
@@ -32,7 +34,8 @@ router.post('/login', async (req, res)=>{
                 return res.json({
                     status:"Success",
                     message:"Login Successful",
-                    token
+                    token,
+                    user: {_id, email}
                 })
             }else{
                 return res.status(400).json({
