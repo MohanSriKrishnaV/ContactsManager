@@ -21,7 +21,8 @@ const Login = ()=>{
         console.log(data)
         if(data.token){
             localStorage.setItem("jwt", data.token)
-            window.location.href = '/landing'
+            localStorage.setItem("user", data.user)
+            // window.location.href = '/landing'
         }
         setResponse(data)
         // console.log(response.message === "Login Successful")
