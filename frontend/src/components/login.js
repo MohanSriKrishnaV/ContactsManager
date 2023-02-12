@@ -24,7 +24,7 @@ const Login = () => {
         console.log(data)
         if (data.token) {
             localStorage.setItem("jwt", data.token)
-            localStorage.setItem("user", data.user)
+            localStorage.setItem("user", JSON.stringify(data.user))
             // window.location.href = '/landing'
             navigate('/landing');
         }
@@ -38,16 +38,19 @@ const Login = () => {
             <div>
                 <input type="email" placeholder="Enter Email" onChange={(e) => setemail(e.target.value)} />
             </div>
+            <br></br>
             <div>
                 <input type="password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} />
                 {response.message ? <div style={{ color: "red" }}>{response.message}</div> : null}
             </div>
+            <br></br>
             <div>
                 <button onClick={HandleLogin}>Sign In</button>
                 {/* {response.message !== "Login Successful" ? <button onClick={HandleLogin}>Sign In</button> : <Link to='/landing'><button onClick={HandleLogin}>Sign In</button></Link>}   */}
             </div>
+            <br></br>
             <div>
-                <Link to='/'><button>Sign Up</button></Link>
+                <Link to='/registration'><button>Sign Up</button></Link>
             </div>
         </section>
     )

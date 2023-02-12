@@ -7,13 +7,15 @@ const data = require("../models/Contact")
 const cors = require("cors");
 //route.use(cors());
 route.get("/", cors(), async (req, res) => {
+    console.log(req.user)
     try {
 
 
-        const info = await data.find()
+        const info = await data.find({user:req.user})
         res.status(200).json({
             status: "passed",
             info,
+            user:req.user
         })
     }
     catch (e) {

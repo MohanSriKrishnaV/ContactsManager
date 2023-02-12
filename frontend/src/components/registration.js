@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom"
+import { Link } from "react-router-dom";
 const SignUp = () => {
     const navigate = useNavigate()
     const [email, setemail] = useState("");
@@ -32,7 +33,7 @@ const SignUp = () => {
         setResponse(data)
         if(data.data){
             alert(data.message)
-            navigate('/login')
+            navigate('/')
         }
     }
     const checkErrors = (type) => {
@@ -82,6 +83,10 @@ const SignUp = () => {
                 <br></br>
                 <div>
                     <button type="submit" onClick={HandleSignup} disabled={isSubmitValid === 0 || error.email.message.length !==0 || error.password.message.length !==0 || error.cpass.message.length !==0 || password !== cpass ? true : false}>Signup</button>
+                </div>
+                <br></br>
+                <div>
+                  <Link to='/'>  <button type="submit" >SignIn</button> </Link>
                 </div>
                 {response.message ? <div style={{color:"red"}}>{response.message}</div> : null}
             </form>

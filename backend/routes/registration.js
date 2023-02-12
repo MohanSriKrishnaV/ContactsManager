@@ -4,7 +4,7 @@ const user = require('../models/User');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const secret = 'RESTAPI'
-
+router.use(express.json())
 router.get('/register', (req, res)=>{
     res.send("Welcome to Registration");
 })

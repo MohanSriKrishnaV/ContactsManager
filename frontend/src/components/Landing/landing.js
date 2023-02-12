@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react"
 //import Header from "../header/header"
 import "./landing.css";
-import DragAndDrop from "../ddf";
+// import DragAndDrop from "../ddf";
 import { useRef } from "react";
-import { FileUploader } from "react-drag-drop-files";
+import { useNavigate } from "react-router-dom";
+// import { FileUploader } from "react-drag-drop-files";
 
 const fileTypes = ["CSV"];
 
 const LandingPage = () => {
+    const navigate = useNavigate()
+    const [res, setRes] = useState("");
     const [mail, setmail] = useState([]);
     const [data, setdata] = useState([]);
     const [selections, setSelections] = useState([]);
@@ -32,6 +35,17 @@ const LandingPage = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     const filehandle = (e) => {
         setfile(e.target.files[0]);
     }
@@ -43,20 +57,25 @@ const LandingPage = () => {
 
 
     const formsubmit = async () => {
+        const user_data = localStorage.getItem("user")
+        console.log(typeof(user_data));
+        const req_user = JSON.parse(user_data);
+        console.log(typeof(req_user));
+        console.log(req_user._id)
         const formdata = new FormData();
         formdata.append("file", file);
         console.log(formdata);
         const res = await fetch("http://localhost:8086/contacts", {
             method: "POST",
             headers: {
-                "Authorization": localStorage.getItem("jwt")
+                "Authorization": localStorage.getItem("jwt"),
             },
-            body: formdata
+            body: formdata, 
         })
-        // const response = await res.json();
-        // if (response.status == "success") {
-        //     setcount(count + 1);
-        // }
+        const response = await res.json();
+        if (response.status == "success") {
+            window.location.reload();
+        }
 
     }
 
@@ -117,14 +136,41 @@ const LandingPage = () => {
             return res.json()
         }).then((final) => {
             setdata(final.info)
+            if(final.message){
+                navigate('/landing')   
+            }
+            console.log(final.message)
         }).catch((err) => {
             console.log(err)
         })
+    //   console.log(res) 
     }, [count])
 
+    const HandleLogout = ()=>{
+        localStorage.removeItem("jwt");
+        window.location.reload();
+        
+        // window.history.replaceState('/landing',  "/");
+    }
 
+    useEffect(()=>{
+        if(!localStorage.getItem("jwt")){
+            navigate('/')
+        }
+    }, [])
+    // {
+    //     navigate('/', {replace:true})
+    //     window.history.replaceState('/landing',"/");
+    // }
 
-
+    const x = localStorage.getItem("jwt")
+    const y = localStorage.getItem("user")
+    const z = JSON.parse(y)
+    const em = z.email
+    console.log(em);
+    console.log(JSON.parse(y))
+    // const z = y.email;
+    // console.log(z)
     let arr2 = []
     if (data.length !== 0 && mail.length !== 0) {
         for (let i = 0; i < data.length; i++) {
@@ -156,11 +202,35 @@ const LandingPage = () => {
         setdata(arr)
     }
     console.log(arr2);
+    const [filename,setfilename]=useState("")
+
+    const ondrop = (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        setfilename(file.name);
+        setfile(file);
+    };
     return (
 
         <div id="grid-container">
 
-
+<div
+                className="App floating-modal"
+                onDrop={ondrop}
+                onDragOver={(e) => {
+                    e.preventDefault();
+                }}
+            >
+                <h3>Drag and Drop a CSV file to upload</h3>
+                {filename && (
+                    <>
+                        <div>{filename}</div>
+                        <h4>Press submit to upload the CSV file</h4>
+                        <button onClick={formsubmit} className="modal-btn">Submit</button>
+                        <button onClick={() => { setfilename(""); setpreimport(false); setpostdelete(false); setimportmodal(false) }} className="modal-btn"> Cancel</button>
+                    </>
+                )}
+            </div>
 
 
 
@@ -249,7 +319,7 @@ const LandingPage = () => {
             <div id="aside"> Aside</div>
             <div>
                 <input type="text" placeholder="search by email id " onChange={(e) => { setmail(e.target.value) }} />
-                <select   >
+                {/* <select   >
                     {(arr2.length !== 0) && (arr2.length <= 10) && <>{arr2.map((value, key) => {
                         return (
                             <>
@@ -258,7 +328,7 @@ const LandingPage = () => {
                         )
                     })}</>
                     }
-                </select>
+                </select> */}
             </div>
             <table>
                 <thead>
@@ -295,6 +365,7 @@ const LandingPage = () => {
                     })}</>}
                 </tbody>
             </table>
+            <button onClick={HandleLogout}>Logout</button>
         </div>
     )
 }
