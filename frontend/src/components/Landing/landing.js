@@ -50,7 +50,7 @@ const LandingPage = () => {
         const formdata = new FormData();
         formdata.append("file", file);
         console.log(formdata);
-        const res = await fetch("http://localhost:8086/contacts", {
+        const res = await fetch("https://cmb-ipcy.onrender.com/contacts", {
             method: "POST",
             headers: {
                  "Authorization": localStorage.getItem("jwt")
@@ -66,7 +66,7 @@ const LandingPage = () => {
 
 
     const dltContact = async (e) => {
-        fetch(`http://localhost:8086/contacts/:${e.target.name}`, {
+        fetch(`https://cmb-ipcy.onrender.com/contacts/:${e.target.name}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json;charset=utf-8', "Authorization": localStorage.getItem("jwt")
@@ -86,7 +86,7 @@ const LandingPage = () => {
         setdeletemodal(true);
     }
     const deletecontacts = async () => {
-        await fetch("http://localhost:8086/contacts", {
+        await fetch("https://cmb-ipcy.onrender.com/contacts", {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json;charset=utf-8', "Authorization": localStorage.getItem("jwt")
@@ -109,7 +109,7 @@ const LandingPage = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8086/contacts", {
+        fetch("https://cmb-ipcy.onrender.com/contacts", {
             headers: {
                 "Authorization": localStorage.getItem("jwt")
             }
