@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom"
+import { Link } from "react-router-dom";
+import "./login.css"
 const SignUp = () => {
     const navigate = useNavigate()
     const [email, setemail] = useState("");
@@ -31,8 +33,7 @@ const SignUp = () => {
         console.log(data.data);
         setResponse(data)
         if(data.data){
-            alert(data.message)
-            navigate('/login')
+            navigate('/')
         }
     }
     const checkErrors = (type) => {
@@ -63,27 +64,46 @@ const SignUp = () => {
     }
     const isSubmitValid = email.length && password.length && cpass.length;
     return (
-        <section>
+        <section id="login">
+           <div id="eclips"></div>
+            <div id="eclips2"></div>
+            <img src="https://static.thenounproject.com/png/3169833-200.png" alt="dot" id="dots" width="100px" height="100px"/>
+             <img src="https://static.thenounproject.com/png/3169833-200.png" alt="dot" id="dot2" width="100px" height="100px"/>
+            <div>
+                <h1 id="l">LOGO</h1>
+                <h5 id="n">Create new Account</h5>
+            </div>
             <form>
                 <div>
                     <input type="email" id="email" placeholder="Mail id" onChange={(e) => setemail(e.target.value)} onBlur={(event) => { checkErrors("email") }} value={email} required />
+                    <div id="mess">
                     {!error.email.isValid ? <div style={{color:"red"}}>{error.email.message}</div> : null}
+                    </div>
+                    
                 </div>
                 <br></br>
                 <div>
                     <input type="password" id="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} onBlur={(event) => { checkErrors("password") }} value={password} required />
-                    {!error.password.isValid ? <div style={{color:"red"}}>{error.password.message}</div> : null}
+                    <div id="mess">  {!error.password.isValid ? <div style={{color:"red"}}>{error.password.message}</div> : null}</div>
+                   
                 </div>
                 <br></br>
                 <div>
                     <input type="password" id="cpass" placeholder="Confirm Password" onChange={(e) => setcpass(e.target.value)} onBlur={(event) => { checkErrors("cpass") }} value={cpass} required />
+                    <div id="mess">
                     {!error.cpass.isValid ? <div style={{color:"red"}}>{error.cpass.message}</div> : null}
+                    </div>
+                   
                 </div>
                 <br></br>
                 <div>
-                    <button type="submit" onClick={HandleSignup} disabled={isSubmitValid === 0 || error.email.message.length !==0 || error.password.message.length !==0 || error.cpass.message.length !==0 || password !== cpass ? true : false}>Signup</button>
+                    <button type="submit" onClick={HandleSignup} disabled={isSubmitValid === 0 || error.email.message.length !==0 || error.password.message.length !==0 || error.cpass.message.length !==0 || password !== cpass ? true : false} id="sign-up">Signup</button>
                 </div>
+                <Link to='/'>  <button type="submit" >SignIn</button> </Link>
+                <div id="mess">
                 {response.message ? <div style={{color:"red"}}>{response.message}</div> : null}
+                </div>
+                
             </form>
         </section>
     )
