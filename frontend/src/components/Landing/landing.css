@@ -1,15 +1,12 @@
-table,
-tr,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
+table,tr
+ {
+    border-radius: 10px;
+   padding: 6px;
+}
+th,td{
     padding: 6px;
 }
 
-table {
-    margin-top: 20px;
-}
 
 #edit {
     margin-left: 6px;
@@ -21,68 +18,29 @@ table {
     color: black;
 }
 
-.delete-modal {
-    height: 20vh;
-    width: 30vw;
-    margin-left: 40vw;
-    margin-top: 25vh;
-    text-align: center;
-    border: 2px solid black;
-}
-
-.btns {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 15px;
-    color: #FFFFFF;
-    background: #2DA5FC;
-    border-radius: 5px;
-}
-
 body {
     margin: 0px;
     padding: 0px;
 }
 
 
-
-table,
-tr,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 7px 12px;
-}
-
-table {
-    margin-top: 20px;
-    margin: auto
-}
-
 #edit {
     margin-left: 6px;
     margin-right: 6px;
 }
 
-#titlee[title] {
-    padding: 10px;
 
-
-}
 
 #titlee:hover {
-    background-color: rgb(201, 230, 12);
+    background-color:#0884FF;
 }
 
 #titlee:nth-child(2n+1):hover {
-    background-color: rgb(201, 230, 12);
+    background-color: #0884FF;
 }
 
 #titlee:nth-child(2n+1) {
-    background-color: aquamarine;
+    background: rgba(178, 223, 255, 0.31);
 }
 
 #table-head {
@@ -94,41 +52,141 @@ table {
     color: brown;
 }
 
-#delete {
-    background-color: red;
-    margin: 4px;
-    border: 1px solid grey;
-}
-
 #edit {
     background-color: whitesmoke;
     margin: 4px;
     border: 1px solid grey;
 }
 
+#navbar{
+    position: absolute;
+width: 1000px;
+height: 898px;
+left: 170px;
+top: 80px;
 
-.delete-complete {
-    height: 20vh;
-    width: 30vw;
-    margin-left: 40vw;
-    margin-top: 25vh;
-    text-align: center;
-    border: 2px solid black;
+background: #FBFBFB;
+border-radius: 15px;
+}
+#table{
+    position: absolute;
+    left:15px;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+#search{
+    position: absolute;
+    top:-60px;
+    left:330px
 
 }
+#src{
+    position: absolute;
+    top:5px;
+    left:6px;
+    margin-right: -2px;
+}
+#input{
+    padding: 6px 19px;
+    padding-left: 40px;
+    border-radius: 12px;
+    border: 2px solid gray;
+}
+#select{
+    position: absolute;
+    top:30px;
+    left:0px
 
+}
+#pre{
+    background: #B3DFFF;
+    border-radius: 10px;
+}
+#nav{
+    position: relative;
+    display: flex;
+    
+}
+
+#date{
+    position: absolute;
+    left:20px;
+    top:10px;
+    background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 6px;
+border: 2px solid gray;
+padding: 3px 8px;
+padding-right: 23px;
+  }
+  #cal{
+    position: absolute;
+    left:99px;
+    top:13px;
+  }
+  #filter{
+    position: absolute;
+    left:150px;
+    top:10px;
+    background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 6px;
+border: 2px solid gray;
+padding: 3px 8px;
+  }
+#import{
+    position: absolute;
+    left:790px;
+    top:10px;
+    background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+border: 2px solid gray;
+padding: 3px 8px;
+padding-left: 29px;
+}
+#imp{
+    position: absolute;
+    left:794px;
+    top:14px;
+}
+#delete{
+    position: absolute;
+    left:690px;
+    top:10px;
+    background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+border: 2px solid gray;
+padding: 3px 8px;
+padding-left: 27px;
+}
+#del{
+    position: absolute;
+    left:693px;
+    top:14px;
+}
+#export{
+    position: absolute;
+    left:890px;
+    top:10px;
+    background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+border: 2px solid gray;
+
+padding: 3px 8px;
+padding-left: 27px;
+}
+#emp{
+    position: absolute;
+    left:895px;
+    top:14px;
+}
 
 
 
 /* css for modal over the table */
-
-.pre-upload-modal {
-    position: absolute;
-    background-color: white;
-    border: 2px solid black;
-    margin-left: 30vw;
-}
-
 
 
 body {
@@ -140,4 +198,44 @@ body {
     border: 2px solid black;
     width: 200px;
     height: 100px;
+}
+.floating-modal {
+    position: absolute;
+    background-color: white;
+    border: 2px solid black;
+    margin-left: 30vw;
+    text-align: center;
+    width: 30vw;
+    height: 38vh;
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 40vh;
+    padding: 0.85vw;
+    border-radius: 10px;
+}
+.modal-btn {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 2vw;
+    background: #2DA5FC;
+    border-radius: 5px;
+    text-align: center;
+}
+#fff{
+    position: absolute;
+    top:160px;
+    left:130px
+}
+#can{
+    position: absolute;
+    top:190px;
+    left:70px;
+}
+#sub{
+    position: absolute;
+    top:190px;
+    left:170px;
 }

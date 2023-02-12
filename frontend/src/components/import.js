@@ -15,7 +15,7 @@ const Import = () => {
     }
     const toggledeletemodal = () => {
         setdeletemodal(true);
-    }
+    
 
     const formsubmit = async () => {
         console.log(file);
@@ -60,6 +60,6 @@ const Import = () => {
         </>
     )
 }
-
+}
 export default Import
 
