@@ -18,7 +18,7 @@ const SignUp = () => {
         setpassword("")
         setcpass("");
 
-        const resp = await fetch("http://localhost:8086/api/register", {
+        const resp = await fetch("https://cmb-ipcy.onrender.com/api/register", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
