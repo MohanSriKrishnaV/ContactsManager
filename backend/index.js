@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-const fileUpload = require('express-fileupload');
 const contacts = require("./routes/contacts");
 const jwt = require('jsonwebtoken');
 const user = require('./models/User');
@@ -21,7 +20,6 @@ const secret = "RESTAPI"
 
 
 
-app.use(fileUpload());
 app.use('/api', registrationRoute);
 app.use('/api', loginRoute)
 

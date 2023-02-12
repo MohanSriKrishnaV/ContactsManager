@@ -21,25 +21,9 @@ table {
     color: black;
 }
 
-.delete-modal {
-    height: 20vh;
-    width: 30vw;
-    margin-left: 40vw;
-    margin-top: 25vh;
-    text-align: center;
-    border: 2px solid black;
-}
 
-.btns {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 15px;
-    color: #FFFFFF;
-    background: #2DA5FC;
-    border-radius: 5px;
-}
+
+
 
 body {
     margin: 0px;
@@ -107,29 +91,38 @@ table {
 }
 
 
-.delete-complete {
-    height: 20vh;
-    width: 30vw;
-    margin-left: 40vw;
-    margin-top: 25vh;
-    text-align: center;
-    border: 2px solid black;
 
-}
 
 
 
 
 /* css for modal over the table */
 
-.pre-upload-modal {
+.floating-modal {
     position: absolute;
     background-color: white;
     border: 2px solid black;
     margin-left: 30vw;
+    text-align: center;
+    width: 30vw;
+    height: 36vh;
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 10vh;
+    padding: 0.85vw;
 }
 
-
+.modal-btn {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    margin: 2vw;
+    background: #2DA5FC;
+    border-radius: 5px;
+    text-align: center;
+}
 
 body {
     position: relative;
