@@ -8,6 +8,7 @@ const Login = () => {
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
     const [response, setResponse] = useState([]);
+    const [err, setErr] = useState({email : {isValid : true, message : ""}})
     
     const HandleLogin = async () => {
         const resp = await fetch("https://cmb-ipcy.onrender.com/api/login", {
@@ -26,6 +27,7 @@ const Login = () => {
         if (data.token) {
             localStorage.setItem("jwt", data.token)
             localStorage.setItem("user", JSON.stringify(data.user))
+            alert("Login successful")
             // window.location.href = '/landing'
             navigate('/landing');
         }
@@ -34,6 +36,19 @@ const Login = () => {
         // console.log(JSON.stringify(response) === "Login Successful")
         // console.log(response.token)
     }
+
+    const checkErrors = (type)=>{
+        switch(type){
+            case "1-email":
+                if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)){
+                    setErr({...err, email:{isValid:false, message:"Please enter proper email address"}})  
+                }else{
+                    setErr({...err, email:{isValid:true, message:""}})
+                }
+                break;
+        }
+    }
+
     return (
         <section id="login">
             <div id="eclips"></div>
@@ -47,8 +62,9 @@ const Login = () => {
                 <h5 id="m">Enter your credentials to access your account</h5>
             </div>
             <div>
-                <input type="email" placeholder="Enter Email" onChange={(e) => setemail(e.target.value)} id="l-email"/>
+                <input type="email" placeholder="Enter Email" onChange={(e) => setemail(e.target.value)} onBlur={(event) => { checkErrors("1-email") }} id="l-email"/>
             </div>
+            {!err.email.isValid ? <div style={{color:"red"}}>{err.email.message}</div> : null}
             <div>
                 <input type="password" placeholder="Enter Password" onChange={(e) => setpassword(e.target.value)} id="l-password" />
             </div>

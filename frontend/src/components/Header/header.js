@@ -8,7 +8,7 @@ const Header = () => {
         localStorage.removeItem("jwt");
         window.location.reload();
         
-        // window.history.replaceState('/landing',  "/");
+        // window.history.replaceState('/registration',  "/");
     }
 
     useEffect(()=>{
