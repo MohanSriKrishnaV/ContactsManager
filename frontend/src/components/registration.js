@@ -18,7 +18,7 @@ const SignUp = () => {
         setpassword("")
         setcpass("");
 
-        const resp = await fetch("http://localhost:8086/api/register", {
+        const resp = await fetch("https://cmb-ipcy.onrender.com/api/register", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,13 +84,13 @@ const SignUp = () => {
                 <br></br>
                 <div>
                     <input type="password" id="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} onBlur={(event) => { checkErrors("password") }} value={password} required />
-                    <div id="mess">  {!error.password.isValid ? <div style={{color:"red"}}>{error.password.message}</div> : null}</div>
+                    <div id="mess2">  {!error.password.isValid ? <div style={{color:"red"}}>{error.password.message}</div> : null}</div>
                    
                 </div>
                 <br></br>
                 <div>
                     <input type="password" id="cpass" placeholder="Confirm Password" onChange={(e) => setcpass(e.target.value)} onBlur={(event) => { checkErrors("cpass") }} value={cpass} required />
-                    <div id="mess">
+                    <div id="mess1">
                     {!error.cpass.isValid ? <div style={{color:"red"}}>{error.cpass.message}</div> : null}
                     </div>
                    

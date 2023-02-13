@@ -31,9 +31,11 @@ body {
 
 
 
+
 #titlee:hover {
     background-color:#0884FF;
 }
+
 
 #titlee:nth-child(2n+1):hover {
     background-color: #0884FF;
@@ -224,18 +226,40 @@ body {
     border-radius: 5px;
     text-align: center;
 }
+#svg{
+    position: absolute;
+    top:15px;
+    left:150px;
+}
 #fff{
     position: absolute;
-    top:160px;
-    left:130px
+    top:70px;
+    left:120px
 }
+
+#csv{
+    position: absolute;
+    top:110px;
+    left:90px;
+}
+#csv1{
+    position: absolute;
+    top:80px;
+    left:115px;
+}
+
 #can{
     position: absolute;
     top:190px;
-    left:70px;
+    left:110px;
+    padding: 3px 12px;
+    width:100px;
 }
 #sub{
     position: absolute;
-    top:190px;
-    left:170px;
+    top:145px;
+    left:110px;
+    padding: 3px 12px;
+    width:100px;
 }
+

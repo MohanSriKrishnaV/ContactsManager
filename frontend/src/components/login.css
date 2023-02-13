@@ -20,11 +20,7 @@ font-weight: 400;
 font-size: 15px;
 line-height: 22px
 }
-#mess{
-    position: absolute;
-    left: 320px;
-    top: 135px;
-}
+
 #l-email{
     box-sizing: border-box;
 position: absolute;
@@ -142,7 +138,7 @@ transform: rotate(100.53deg);
     width:260px;
     left: 320px;
     
-    top: 220px;
+    top: 230px;
     padding: 4px 7px;
     background: #FFFFFF;
     border-radius: 5px;
@@ -159,7 +155,7 @@ transform: rotate(100.53deg);
     width:260px;
     left: 320px;
     
-    top: 280px;
+    top: 298px;
     padding: 4px 7px;
     background: #FFFFFF;
     border-radius: 5px;
@@ -172,7 +168,7 @@ transform: rotate(100.53deg);
     width:260px;
     left: 320px;
     border-radius: 4px;
-    top: 340px;
+    top: 349px;
  padding: 4px 7px;
  background: #7D8CC4;
    color:white; 
@@ -198,4 +194,19 @@ line-height: 22px
     left: 20px;
     top: 370px;
     
+}
+#mess{
+    position: absolute;
+    left: 320px;
+    top: 135px;
+}
+#mess1{
+    position: absolute;
+    left: 320px;
+    top: 276px;
+}
+#mess2{
+    position: absolute;
+    left: 320px;
+    top: 209px;
 }

@@ -10,7 +10,7 @@ const Login = () => {
     const [response, setResponse] = useState([]);
     
     const HandleLogin = async () => {
-        const resp = await fetch("http://localhost:8086/api/login", {
+        const resp = await fetch("https://cmb-ipcy.onrender.com/api/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
