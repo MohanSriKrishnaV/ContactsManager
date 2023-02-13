@@ -58,7 +58,7 @@ const LandingPage = () => {
             body: formdata
         })
         const response = await res.json();
-        if (response.status == "success") {
+        if (response.status === "success") {
             setcount(count + 1);
         }
 
@@ -136,7 +136,7 @@ const LandingPage = () => {
                     break
                 }
             }
-            if (flag == "true") {
+            if (flag === "true") {
                 arr2.push(data[i])
             }
         }
@@ -211,10 +211,10 @@ const LandingPage = () => {
                 <tbody>
                     {(arr2.length !== 0) && <>{arr2.map((value) => {
                         return (
-
-                            <tr key={value._id} title={value.email} id="titlee">
-                                <td >
-                                    <input type="checkbox" name={value._id} onChange={selectionChange} /></td>
+                              
+                            <tr key={value._id} title={value.email}  id="titlee" > 
+                                
+                                <td ><input type="checkbox" name={value._id} onChange={selectionChange} /></td>
                                 <td>{value.name}</td>
                                 <td>{value.designation}</td>
                                 <td>{value.company}</td>
@@ -224,7 +224,8 @@ const LandingPage = () => {
                                 <td>{value.country}</td>
                                 <td><button id="edit">edit</button></td>
                                 <td> <button id="dlt" onClick={(e) => { dltContact(e); setdeletemodal(true); setpostdelete(true) }} name={value._id}>delete</button></td>
-                            </tr>
+
+                                </tr>
                         )
 
                     })}</>}
@@ -260,9 +261,9 @@ const LandingPage = () => {
                             e.preventDefault();
                         }}
                     >
-                        <h3>Import CSV File</h3>
-                        <h5>Drag and Drop CSV File to upload</h5>
-                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <h3 id="csv1">Import CSV File</h3>
+                        <h5 id="csv">Drag and Drop CSV File to upload</h5>
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg">
                         <circle cx="22.5" cy="22.5" r="22.5" fill="#2DA5FC" fill-opacity="0.5" />
                          <path d="M19.5 30L14.5 30C13.9477 30 13.5 29.5523 13.5 29L13.5 13C13.5 12.4477 13.9477 12 14.5 12L24 12M24 12L28.5 16.5M24 12L24 16.5L28.5 16.5M28.5 16.5L28.5 21" stroke="black" stroke-width="2" />
                          <line x1="21" y1="27.5" x2="30" y2="27.5" stroke="black" stroke-width="2" />
